@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>init</title>
+</head>
+<body>
+<!--vue实例创建，初始化例子-->
+<div id="app">
+    {{message}}
+    <span v-once>这个将不会改变: {{ msg }}</span>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: '这是一个测试数据',
+        msg: '我只绑定一次'
+      }
+    })
+    /*
+    * vm.message实现数据动态响应变化，vm.message1来模拟新增加数据不响应
+    *
+    * 数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值
+    * Mustache 标签将会被替代为对应数据对象上 msg 属性的值。无论何时，绑定的数据对象上 msg 属性发生了改变，插值处的内容都会更新
+    * */
+</script>
+</body>
+</html>

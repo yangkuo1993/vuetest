@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: '12345'
+      },
+      beforeCreate: function () {
+        console.log('beforeCreate,实例创建之前');
+        console.log(this.message);
+        console.log(this.$data);
+        console.log(this.$el);
+      },
+      created: function () {
+        console.log('created,实例创建之后');
+        console.log(this.message);
+        console.log(this.$el);
+      },
+      beforeMount: function () {
+        console.log('beforeMount, 实例挂载之前');
+        console.log(this.message);
+        console.log(this.$el);
+      },
+      mounted: function () {
+        console.log('mounted, 实例挂载');
+        console.log(this.message);
+        console.log(this.$el);
+      },
+      beforeUpdate: function () {
+        console.log('beforeUpdate, 数据更新之前');
+        console.log(this.message);
+        console.log(this.$el);
+        console.log(this.$data);
+      },
+      updated: function () {
+        console.log('updated, 数据更新后');
+        console.log(this.message);
+        console.log(this.$el);
+        console.log(this.$data);
+      },
+      beforeDestroy: function () {
+        console.log('beforeDestroy,实例销毁之前');
+        console.log(this.message);
+        console.log(this.$el);
+        console.log(this.$data);
+      },
+      destroyed: function () {
+        console.log('destroyed,实例销毁');
+        console.log(this.message);
+        console.log(this.$el);
+        console.log(this.$data);
+      }
+    })
+</script>
+</body>
+</html>

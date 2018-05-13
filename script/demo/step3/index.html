@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>init</title>
+</head>
+<body>
+<!--vue实例创建，初始化例子-->
+<div id="app">
+    <div>{{text}}</div>
+    <div v-html="text"></div>
+    <div v-bind:id="id">vue bind 绑定示例</div>
+    <div :id="simpleId">vue bind 绑定示例(简写版本)</div>
+    <button v-bind:disabled="disabled" @click="test">disabled</button>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+        text: '<div style="color: red">这是一个段html文本</div>',
+        id: 'dsfjlsdf098900-90-9-0',
+        simpleId: '2398409df09sd8f09ds',
+        disabled: null
+    },
+    methods: {
+      test: function () {
+        console.log('点击成功')
+      }
+    }
+  })
+  /*
+  * 双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用 v-html 指令：
+  *
+  * 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。
+  *
+  * Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：
+  *
+  * 在布尔特性的情况下，它们的存在即暗示为 true，v-bind 工作起来略有不同
+  * disabled值是 null、undefined 或 false，则 disabled 特性甚至不会被包含在渲染出来的 <button> 元素中
+  *
+  * 指令 (Directives) 是带有 v- 前缀的特殊特性。指令特性的值预期是单个 JavaScript 表达式 。指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。
+  * */
+</script>
+</body>
+</html>
