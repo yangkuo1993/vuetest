@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+</head>
+<body>
+<div id="app">
+    <ul id="example-1">
+        <li v-for="(item, index) in items">
+            {{ item }}----{{index}}
+        </li>
+    </ul>
+    <ul id="v-for-object" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <button @click="change">change</button>
+    <button @click="setSex">setSex</button>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            items: [
+                'a', 'b', 'c'
+            ],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        },
+        methods: {
+            change: function () {
+                this.items[1] = '123444'
+                // this.$set(this.items, 1, 12344444)
+                // this.items.splice(1, 1, 1234444444)
+            },
+            setSex: function () {
+                // this.object.sex = '男'
+                this.$set(this.object, 'sex', '男')
+            }
+        }
+    })
+</script>
+</body>
+</html>

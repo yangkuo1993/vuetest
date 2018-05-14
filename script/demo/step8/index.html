@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="ok">Yes</h1>
+    <h5 v-else>NO</h5>
+    <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+    <hr>
+    <!--input 添加key-->
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </template>
+    <button @click="change">改变{{loginType}}</button>
+    <hr>
+    <h1 v-show="ok">Hello!</h1>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            ok: true,
+            type: 'C',
+            loginType: 'username'
+        },
+        methods: {
+            change: function () {
+                // this.loginType === 'username' ? this.loginType = 'email':this.loginType = 'username'
+                if (this.loginType === 'username') {
+                    this.loginType = 'email'
+                } else {
+                    this.loginType = 'username'
+                }
+            }
+        }
+    })
+    /*
+    * 因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？
+    * 此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素
+    *
+    * v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。
+    *
+    * 不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display
+    * */
+</script>
+</body>
+</html>

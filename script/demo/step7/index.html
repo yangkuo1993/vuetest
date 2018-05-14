@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class 与 Style 绑定</title>
+    <style>
+        .active{
+            color: red;
+        }
+        .big-font{
+            font-size: 44px;
+        }
+        .normal{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="normal" :class="{active: isActive, 'big-font': hasFont}">123456789</div>
+    <hr>
+    <div :class="classObject">this is test text</div>
+    <hr>
+    <div :class="classObjectComputed">this is test text(computed)</div>
+    <hr>
+    <div :class="[activeClass, errorClass]">array test text</div>
+    <hr>
+    <div :class="[hasFont ? 'big-font' : 'active']">三目运算符</div>
+    <hr>
+    <div :class="[{active: isActive}, errorClass]">数组中的对象语法</div>
+    <hr>
+    <div :style="{color: activeColor, fontSize: fontSize + 'px'}">绑定内联样式</div>
+    <hr>
+    <div :style="styleObject">直接绑定样式对象</div>
+    <hr>
+    <div :style="[styleObject]">绑定多个对象值</div>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            hasFont: false,
+            classObject: {
+                active: true,
+                'big-font': false
+            },
+            error: false,
+            activeClass: 'active',
+            errorClass: 'big-font',
+            fontSize: 50,
+            activeColor: 'blue',
+            styleObject: {
+                color: 'blue',
+                fontSize: '50px'
+            }
+        },
+        computed: {
+            classObjectComputed: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'big-font': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
