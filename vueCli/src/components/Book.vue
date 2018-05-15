@@ -40,6 +40,9 @@ export default {
     chooseBook (ISBN) {
       this.$emit('ISBN', ISBN)
     }
+  },
+  mounted () {
+    // console.log(this.$root)
   }
 }
 </script>

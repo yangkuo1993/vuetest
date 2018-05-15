@@ -20,8 +20,10 @@ export default {
   methods: {
     getISBN (value) {
       console.log(value)
+      // console.log(this.demo())
     }
-  }
+  },
+  inject: ['demo']
 }
 </script>
 

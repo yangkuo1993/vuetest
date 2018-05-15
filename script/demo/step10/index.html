@@ -28,6 +28,8 @@
     <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
     <!-- 即事件不是从内部元素触发的 -->
     <div v-on:click.self="doThat">即事件不是从内部元素触发的</div>
+    <!--只会触发一次 -->
+    <div @click.once='doThis'>只会触发一次</div>
 </div>
 <script src="../../assets/js/vue.js"></script>
 <script>
@@ -38,6 +40,7 @@
         },
         methods: {
             doThis: function () {
+                console.log('doThis')
             },
             onSubmit: function () {
             },

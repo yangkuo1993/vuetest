@@ -6,7 +6,14 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  provide () {
+    return {
+      demo () {
+        console.log('demo')
+      }
+    }
+  }
 }
 </script>
 
